@@ -1,6 +1,7 @@
 # webpack-watcher-vim
 
 You can run webpack and check build log from vim.
+![screenshot1](https://github.com/ta-daiki/webpack-watcher-vim/blob/master/doc/webpack-watcher-screenshot.jpg?raw=true)
 
 ## Usage
 1. Set g:webpack_watcher_run_cmd in your .vimrc (see. [Configuration](#configuration))

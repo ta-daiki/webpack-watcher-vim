@@ -15,18 +15,15 @@ you can run webpack and check build log from vim.
 ==============================================================================
 CONFIGURATION                                                      *webpack-watcher-configuration*
 
-Global variable "webpack_watcher_run_cmd" must be set in your .vimrc.
+Global variable "webpack_watcher_cmd_path" must be set in your .vimrc.
 
-Example 1)
-let g:webpack_watcher_run_cmd = 'npm run webpack'
-
-Example 2)
-let g:webpack_watcher_run_cmd = join([$HOME, 'node_modules', '.bin', 'webpack'], '/') . ' --watch --progress --config'
+Example)
+let g:webpack_watcher_cmd_path = substitute(system('npm bin') . '/webpack', '\r\?\n', '', 'g')
 
 ==============================================================================
 USAGE                                                      *webpack-watcher-usage*
 
-1. Set g:webpack_watcher_run_cmd in your .vimrc (see. |webpack-watcher-configuration|)
+1. Set g:webpack_watcher_cmd_path in your .vimrc (see. |webpack-watcher-configuration|)
 
 2. Exec :WebpackRun __your_webpack_config_file_path__ command.
 

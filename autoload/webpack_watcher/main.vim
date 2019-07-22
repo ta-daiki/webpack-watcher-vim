@@ -54,7 +54,7 @@ function! webpack_watcher#main#run_with_config(config_path) abort
 
     let l:job_cmd = s:get_job_cmd(a:config_path)
 
-    if strlen(l:job_cmd)
+    if strlen(l:job_cmd) == 0
         return
     endif
 

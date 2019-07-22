@@ -13,7 +13,14 @@ function! s:get_job_cmd(config_path)
         return
     endif
 
-    return join([g:webpack_watcher_cmd_path, a:config_path], ' ')
+    let l:run_cmd = [
+                \ g:webpack_watcher_cmd_path,
+                \ '--watch',
+                \ '--config',
+                \ a:config_path
+                \ ]
+
+    return join(l:run_cmd, ' ')
 endfunction
 
 function! webpack_watcher#main#run_with_config(config_path) abort

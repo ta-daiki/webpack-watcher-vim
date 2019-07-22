@@ -3,19 +3,17 @@ let s:last_webpack_message_list = []
 let s:config_file_path2job_id = {}
 
 function! s:get_job_cmd(config_path)
-    if strlen(g:webpack_watcher_run_cmd) == 0
+    if !executable(g:webpack_watcher_cmd_path)
+        echo 'g:webpack_watcher_cmd_path is undefined.'
+        return
+    endif
+
+    if strlen(g:webpack_watcher_cmd_path) == 0
         echo 'g:webpack_watcher_run_cmd is empty.'
         return
     endif
 
-    let l:join_word = ' '
-    let l:run_cmd = g:webpack_watcher_run_cmd
-
-    if l:run_cmd =~ '^npm run'
-        let l:join_word = ' -- '
-    endif
-
-    return join([l:run_cmd, a:config_path], l:join_word)
+    return join([g:webpack_watcher_cmd_path, a:config_path], ' ')
 endfunction
 
 function! webpack_watcher#main#run_with_config(config_path) abort
@@ -48,6 +46,11 @@ function! webpack_watcher#main#run_with_config(config_path) abort
     endfunction
 
     let l:job_cmd = s:get_job_cmd(a:config_path)
+
+    if strlen(l:job_cmd)
+        return
+    endif
+
     let l:job_id = jobstart(
         \ l:job_cmd,
         \ {'on_stdout': function('s:job_callback')}

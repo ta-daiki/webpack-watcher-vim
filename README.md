@@ -18,7 +18,7 @@ You can run webpack and check build log from vim.
     ```
 
 ## Configuration
-Global variable "webpack_watcher_run_cmd" must be set in your .vimrc.
+Global variable "webpack_watcher_cmd_path" must be set in your .vimrc.
 
 Example)
 ```

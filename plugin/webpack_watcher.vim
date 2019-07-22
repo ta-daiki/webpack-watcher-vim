@@ -4,7 +4,7 @@ endif
 
 let g:loaded_webpack_watcher = 1
 
-if !exists('g:webpack_watcher_run_cmd')
+if !exists('g:webpack_watcher_cmd_path')
     let g:webpack_watcher_cmd_path = ''
 endif
 

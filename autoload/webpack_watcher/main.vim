@@ -59,9 +59,10 @@ function! webpack_watcher#main#run_with_config(config_path) abort
     endif
 
     let l:job_id = jobstart(
-        \ l:job_cmd,
-        \ {'on_stdout': function('s:job_callback')}
-        \ )
+        \ l:job_cmd, {
+        \   'on_stdout': function('s:job_callback'),
+        \   'on_exit': { -> remove(s:config_file_path2job_id, a:config_path) },
+        \ })
 
     let s:config_file_path2job_id[a:config_path] = l:job_id
 
